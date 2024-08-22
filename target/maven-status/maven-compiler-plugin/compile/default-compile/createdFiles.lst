@@ -1,0 +1,10 @@
+pojo\Courses.class
+pojo\WebAutomation.class
+pojo\AddPlace.class
+pojo\GetCourse.class
+pojo\Api.class
+xmlMarshelUnMarshel\User.class
+xmlMarshelUnMarshel\Marshelling.class
+pojo\Location.class
+demo\oAuthTest.class
+pojo\Mobile.class
