@@ -16,18 +16,18 @@ Body:
         "lng": 33.427362
     },
     "accuracy": 50,
-    "name": "Frontline house",
+    "name": "Priya",
     "phone_number": "(+91) 983 893 3937",
-    "address": "29, side layout, cohen 09",
+    "address": "Melbourne",
     "types": [
         "shoe park",
         "shop"
     ],
     "website": "http://google.com",
-    "language": "French-IN"
+    "language": "English"
 }
 HTTP/1.1 200 OK
-Date: Thu, 22 Aug 2024 01:37:09 GMT
+Date: Fri, 20 Sep 2024 07:10:47 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
@@ -40,17 +40,17 @@ Content-Type: application/json;charset=UTF-8
 
 {
     "status": "OK",
-    "place_id": "4b838fa46c689660ccf1fea3683d2927",
+    "place_id": "1e80b356ac90d7d0b404d0d31396b8e7",
     "scope": "APP",
-    "reference": "3f78c6f74dc789a358dabd53aad402da3f78c6f74dc789a358dabd53aad402da",
-    "id": "3f78c6f74dc789a358dabd53aad402da"
+    "reference": "e785ef59223bcd4d64a43d4b5650c705e785ef59223bcd4d64a43d4b5650c705",
+    "id": "e785ef59223bcd4d64a43d4b5650c705"
 }
 Request method:	GET
-Request URI:	https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=4b838fa46c689660ccf1fea3683d2927
+Request URI:	https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=1e80b356ac90d7d0b404d0d31396b8e7
 Proxy:			<none>
 Request params:	<none>
 Query params:	key=qaclick123
-				place_id=4b838fa46c689660ccf1fea3683d2927
+				place_id=1e80b356ac90d7d0b404d0d31396b8e7
 Form params:	<none>
 Path params:	<none>
 Headers:		Accept=*/*
@@ -59,13 +59,13 @@ Cookies:		<none>
 Multiparts:		<none>
 Body:			<none>
 HTTP/1.1 200 OK
-Date: Thu, 22 Aug 2024 01:37:11 GMT
+Date: Fri, 20 Sep 2024 07:10:48 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
 Access-Control-Max-Age: 3600
 Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
-Content-Length: 257
+Content-Length: 229
 Keep-Alive: timeout=5, max=100
 Connection: Keep-Alive
 Content-Type: application/json;charset=UTF-8
@@ -76,12 +76,12 @@ Content-Type: application/json;charset=UTF-8
         "longitude": "33.427362"
     },
     "accuracy": "50",
-    "name": "Frontline house",
+    "name": "Priya",
     "phone_number": "(+91) 983 893 3937",
-    "address": "29, side layout, cohen 09",
+    "address": "Melbourne",
     "types": "shoe park,shop",
     "website": "http://google.com",
-    "language": "French-IN"
+    "language": "English"
 }
 Request method:	POST
 Request URI:	https://rahulshettyacademy.com/maps/api/place/delete/json?key=qaclick123
@@ -96,10 +96,10 @@ Cookies:		<none>
 Multiparts:		<none>
 Body:
 {
-    "place_id": "4b838fa46c689660ccf1fea3683d2927"
+    "place_id": "1e80b356ac90d7d0b404d0d31396b8e7"
 }
 HTTP/1.1 200 OK
-Date: Thu, 22 Aug 2024 01:37:12 GMT
+Date: Fri, 20 Sep 2024 07:10:51 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST

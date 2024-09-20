@@ -1,0 +1,13 @@
+200 sucessfll 
+200- Ok
+201- created
+20
+
+400 client error
+400 bad request
+401-unautorised
+403-forbidden
+404 not found
+500 Server error
+500 internal server error
+503 service unavailable

@@ -9,8 +9,8 @@ Feature: validating Place APIs
     And verify place_Id created  maps to "<name>" using "GetPlaceAPI"
     Examples:
     |name|language|address|
-    |Frontline house|French-IN|29, side layout, cohen 09|
-   # |Priya|English|Melbourne|
+    #|Frontline house|French-IN|29, side layout, cohen 09|
+  |Priya|English|Melbourne|
    
    @DeletePlaceAPI
    Scenario: if Delete Place functionality is working fine

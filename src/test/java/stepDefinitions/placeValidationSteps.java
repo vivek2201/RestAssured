@@ -14,12 +14,20 @@ import resources.TestdataBuild;
 import resources.utilities;
 
 import static io.restassured.RestAssured.*;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
-
+import io.restassured.module.jsv.JsonSchemaValidator;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.junit.Assert;
+
+import builder.JsonBuild;
 
 public class placeValidationSteps extends utilities {
 	RequestSpecification res;
@@ -27,11 +35,19 @@ public class placeValidationSteps extends utilities {
 	static String  place_id;
 	JsonPath js;
 	TestdataBuild data = new TestdataBuild();
+	String filePath;
 	@Given("Add Place Payload {string} {string} {string}")
 	public void add_place_payload(String name, String langauge, String address) throws IOException {
+		filePath= "Config//AddPlacePayload.json";
+		Map<String,String> data= new HashMap<String,String>();
+	    data.put("name",name);
+	    data.put("address", address);
+	    data.put("language",langauge);
 	 	
 	res=given().spec(requestSpec())
-			.body(data.AddPlacePayload(name,langauge,address));
+			.body(JsonBuild.updatePayload(data,filePath));
+			//.body(data.AddPlacePayload(name,language,address));
+	
 	
 		}
 	@When("user calls {string} with {string} http request")
@@ -48,6 +64,11 @@ public class placeValidationSteps extends utilities {
 	}
 	else if (method.equalsIgnoreCase("GET"))
 	{response= res.when().get(resourceapi.getResource());
+	//new code from vivek
+	System.out.println("printing response"+response.prettyPrint());
+	System.out.println("printing lat"+ response.body().path("location.latitude"));
+	
+
 		/*
 		 * AddPlace ap=res.when().get(resourceapi.getResource()).as(AddPlace.class);
 		 * System.out.println(ap.getAccuracy());
@@ -66,6 +87,7 @@ public class placeValidationSteps extends utilities {
 	    // Write code here that turns the phrase above into concrete actions
 	   
 	   assertEquals(getJsonValue(response,key),value);
+	   
 	}
 	
 	@Then("verify place_Id created  maps to {string} using {string}")
@@ -73,7 +95,24 @@ public class placeValidationSteps extends utilities {
 	    // Write code here that turns the phrase above into concrete actions
 		place_id = getJsonValue(response,"place_id");
 	   res= given().spec(requestSpec()).queryParam("place_id", place_id);
+	   InputStream schemaStream = getClass().getClassLoader().getResourceAsStream("responseschema.json");
+       if (schemaStream == null) {
+           throw new RuntimeException("Schema file not found in classpath");
+       }
 	   user_calls_with_http_request(resource,"GET");
+	   response.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(schemaStream));
+	   //response.then().body("latitude", containsString("latitude"));
+	   ///to get the resonse time in milliseconds getTime()
+	   long responsetime = response.time();
+	   ///to get the response body size in bytes
+	  
+	   int responsebodysize	= response.getBody().asString().length();
+	   int maxAcceptableSize = 5000;
+	   System.out.println(responsetime);
+	   long MaxAcceptableResponseTime = 2000;
+	   assertTrue(responsetime < MaxAcceptableResponseTime);
+	   assertTrue(responsebodysize<maxAcceptableSize);
+	   //response.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("C:\\Users\\Vivek\\eclipse-workspace\\RestAPIFramework\\src\\test\\resources\\responseschema.json"));
 	   String resname=getJsonValue(response,"name");
 	   assertEquals(resname,name);
 	}
@@ -83,6 +122,7 @@ public class placeValidationSteps extends utilities {
 	    // Write code here that turns the phrase above into concrete actions
 		System.out.println(place_id);
 	    res = given().spec(requestSpec()).body(data.deletePayload(place_id));
+	    
 	}
 
 

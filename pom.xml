@@ -7,7 +7,6 @@
   <groupId>APIFramework</groupId>
   <artifactId>RestAPIFramework</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-
   <name>RestAPIFramework</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
@@ -33,12 +32,28 @@
     <artifactId>rest-assured</artifactId>
     <version>5.4.0</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
+<dependency>
+    <groupId>org.freemarker</groupId>
+    <artifactId>freemarker</artifactId>
+    <version>2.3.33</version>
+</dependency>
+
 <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 <dependency>
     <groupId>io.cucumber</groupId>
     <artifactId>cucumber-java</artifactId>
     <version>7.18.0</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/com.github.java-json-tools/json-schema-validator -->
+<!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+<dependency>
+    <groupId>io.rest-assured</groupId>
+    <artifactId>json-schema-validator</artifactId>
+    <version>5.4.0</version>
+</dependency>
+
+
 <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
 <dependency>
     <groupId>io.cucumber</groupId>

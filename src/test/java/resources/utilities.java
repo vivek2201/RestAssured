@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import io.restassured.RestAssured;
@@ -21,12 +23,15 @@ import io.restassured.specification.RequestSpecification;
 public class utilities {
 	static RequestSpecification res;
 	public RequestSpecification requestSpec() throws IOException
+	
 	{
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("key", "qaclick123");
 		//RestAssured.baseURI="https://rahulshettyacademy.com";
 		if(res==null)
 		{
 		PrintStream ps= new PrintStream(new FileOutputStream("logging.txt"));
-		res = new RequestSpecBuilder().setBaseUri(getGlobalValues("baseURI")).addQueryParam("key","qaclick123")
+		res = new RequestSpecBuilder().setBaseUri(getGlobalValues("baseURI")).addQueryParams(map)
 				.addFilter(RequestLoggingFilter.logRequestTo(ps))
 				.addFilter(ResponseLoggingFilter.logResponseTo(ps))
 				.setContentType(ContentType.JSON).build();
@@ -45,6 +50,8 @@ public class utilities {
 	{
 		String res=response.asString();
 		JsonPath js=new JsonPath(res);
+	System.out.println(js.getString("key"));
+
 		return  (js.get(Key).toString());
 	}
 

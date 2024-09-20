@@ -1,6 +1,0 @@
-resources\utilities.class
-stepDefinitions\Hooks.class
-stepDefinitions\placeValidationSteps.class
-resources\APIResources.class
-resources\TestdataBuild.class
-cucumber\Options\TestRunner.class
